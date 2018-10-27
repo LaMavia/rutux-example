@@ -1,5 +1,6 @@
 import Rutux from './rutux'
 import { resolve } from 'path'
+import { OutgoingHttpHeaders } from 'http2';
 
 const app = new Rutux(
 	resolve(__dirname, 'views'),
@@ -21,37 +22,14 @@ app.hook({
 	path: '/',
 	listener: (self, { stream }) => {
 		self.compileSass().catch(console.error)
-		stream.respond({
+		const headers: OutgoingHttpHeaders = {
 			'content-type': 'text/html',
-		})
-		stream.write(self.templates['index']({}))
+			':status': 200,
+		}
+		stream.respond(headers)
+		self.render(stream, 'index')
 		self.pushAssets(stream, ['/css/cat.css','/img/cat.png'])
 	},
 })
 
-app.hook({
-	method: "GET",
-	path: '/cat',
-	listener(self, {stream, headers, query}) {
-		console.dir({headers, query}, {colors: true, depth: 10})
-		stream.respond({
-			'content-type': 'text/html'
-		})
-		stream.write(self.templates["cat"]())
-		self.pushAssets(stream, ['/css/cat.css','/img/cat.jpeg'])
-	}
-})
-
 app.apport(8000)
-/**
- * {
-    debugger
-    console.log(self)
-    stream.respond({
-      ":status": 200,
-      "content-type": "text/html"
-    })
-    stream.write(self.templates["index"]({}), () => console.log("wrote to the stream"))
-    stream.end('ok\n')
-  }
- */

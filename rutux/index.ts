@@ -1,4 +1,4 @@
-import http, { ServerHttp2Stream } from 'http2'
+import http, { ServerHttp2Stream, Http2Stream } from 'http2'
 import pug from 'pug'
 import fs from 'fs-extra'
 import path from 'path'
@@ -295,6 +295,14 @@ export default class Rutux {
 		}
 
 		this.routes.push(route)
+		return null
+	}
+
+	render(stream: Http2Stream, template: string, props: {[key: string]: any} = {}): Error | null {
+		const _t = this.templates[template]
+		if(!_t || typeof _t !== 'function') return new Error("Template is either undefined or not a function")
+		
+		stream.write(_t(props)) 
 		return null
 	}
 

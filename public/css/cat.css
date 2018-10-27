@@ -29,7 +29,14 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
   font-size: 3rem;
-  animation: show_text 1s 0s ease-out; }
+  animation: show_text 1s 0s ease-out;
+  justify-content: space-around; }
+  .text * {
+    margin-left: -.5ch;
+    padding: 0;
+    width: 0;
+    color: #ffffff;
+    text-shadow: 0 0 7px #ffffff; }
 
 @keyframes show_text {
   from {

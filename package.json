@@ -8,7 +8,10 @@
     "start": "ts-node index.ts",
     "dev": "nodemon --exec \"ts-node index.ts\" index.ts"
   },
-  "keywords": ["yeoman-generator", "rutux"],
+  "keywords": [
+    "yeoman-generator",
+    "rutux"
+  ],
   "author": "Tomasz Surowiec LastShadowPL <xeloxpl@windowslive.com>",
   "license": "ISC",
   "files": [
