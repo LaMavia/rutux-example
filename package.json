@@ -1,0 +1,35 @@
+{
+  "name": "generator-rutux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node index.ts",
+    "dev": "nodemon --exec \"ts-node index.ts\" index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "files": [
+    "rutux",
+    "public",
+    "views",
+    "index.ts",
+    "localhost.crt",
+    "localhost.key"
+  ],
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.4",
+    "@types/node-sass": "^3.10.32",
+    "@types/pug": "^2.0.4",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.3"
+  },
+  "dependencies": {
+    "fs-extra": "^7.0.0",
+    "node-sass": "^4.9.4",
+    "pug": "^2.0.3",
+    "yeoman-generator": "^3.1.1"
+  }
+}

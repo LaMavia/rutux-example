@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background-color: #000000;
+}
+
+.cat {
+	position: fixed;
+	left: 50%;
+	bottom: 0;
+	height: 50vh;
+	transform: translateX(-50%);
+  z-index: 2;
+}
+
+.text {
+	position: fixed;
+	bottom: 50%;
+	left: 50%;
+	text-align: center;
+	transform: translate(-50%, -50%);
+	color: #ffffff;
+	text-transform: uppercase;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	text-align: center;
+	font-size: 3rem;
+	animation: show_text 1s 0s ease-out;
+}
+
+@keyframes show_text {
+	from {
+		transform: translate(-50%, 25vh);
+	}
+	to {
+		transform: translateX(-50%, 0%);
+	}
+}
