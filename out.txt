@@ -1,0 +1,541 @@
+Statistical profiling result from isolate-0x3161e40-v8.log, (2089 ticks, 26 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+     21    1.0%          /lib/x86_64-linux-gnu/libc-2.23.so
+     16    0.8%          [vdso]
+      3    0.1%          /lib/x86_64-linux-gnu/libpthread-2.23.so
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      6    0.3%    0.3%  Builtin: StoreIC
+      5    0.2%    0.2%  Builtin: InterpreterEntryTrampoline
+      4    0.2%    0.2%  Builtin: LoadIC_Uninitialized
+      3    0.1%    0.1%  LazyCompile: ~stat internal/modules/cjs/loader.js:82:14
+      3    0.1%    0.1%  LazyCompile: ~normalizeString path.js:57:25
+      3    0.1%    0.1%  Builtin: LoadIC_Noninlined
+      3    0.1%    0.1%  Builtin: FindOrderedHashMapEntry
+      2    0.1%    0.1%  LazyCompile: ~isIdentifierChar /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/acorn-globals/node_modules/acorn/dist/acorn.js:77:26
+      2    0.1%    0.1%  Builtin: StringAdd_CheckNone_NotTenured
+      2    0.1%    0.1%  Builtin: JSEntryTrampoline
+      2    0.1%    0.1%  Builtin: Construct {1}
+      2    0.1%    0.1%  Builtin: Call_ReceiverIsAny
+      1    0.0%    0.0%  Stub: InternalArrayConstructorStub
+      1    0.0%    0.0%  LazyCompile: ~scan /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/pug-lexer/index.js:185:17
+      1    0.0%    0.0%  LazyCompile: ~runInThisContext vm.js:299:26
+      1    0.0%    0.0%  LazyCompile: ~readSync fs.js:472:18
+      1    0.0%    0.0%  LazyCompile: ~pp$7.readWord1 /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/acorn/dist/acorn.js:3047:28
+      1    0.0%    0.0%  LazyCompile: ~pp$6.updateContext /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/acorn-globals/node_modules/acorn/dist/acorn.js:2589:30
+      1    0.0%    0.0%  LazyCompile: ~pp$5.startNodeAt /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/acorn-globals/node_modules/acorn/dist/acorn.js:2521:28
+      1    0.0%    0.0%  LazyCompile: ~pp$5.finishNode /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/acorn-globals/node_modules/acorn/dist/acorn.js:2537:27
+      1    0.0%    0.0%  LazyCompile: ~pp$3.parseMaybeUnary /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/acorn-globals/node_modules/acorn/dist/acorn.js:1828:32
+      1    0.0%    0.0%  LazyCompile: ~parseChar /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/character-parser/index.js:76:19
+      1    0.0%    0.0%  LazyCompile: ~nullCheck internal/fs/utils.js:188:19
+      1    0.0%    0.0%  LazyCompile: ~getNative /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/lodash.clonedeep/index.js:1178:19
+      1    0.0%    0.0%  LazyCompile: ~closeSync fs.js:396:19
+      1    0.0%    0.0%  LazyCompile: ~basename path.js:1294:30
+      1    0.0%    0.0%  LazyCompile: ~attrs /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/pug-code-gen/index.js:797:18
+      1    0.0%    0.0%  LazyCompile: ~Module._resolveLookupPaths internal/modules/cjs/loader.js:399:38
+      1    0.0%    0.0%  LazyCompile: ~Module._nodeModulePaths internal/modules/cjs/loader.js:358:37
+      1    0.0%    0.0%  LazyCompile: ~Module._load internal/modules/cjs/loader.js:501:24
+      1    0.0%    0.0%  LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:697:37
+      1    0.0%    0.0%  LazyCompile: ~Module._compile internal/modules/cjs/loader.js:649:37
+      1    0.0%    0.0%  LazyCompile: ~DoJoin native array.js:87:16
+      1    0.0%    0.0%  LazyCompile: *Module._nodeModulePaths internal/modules/cjs/loader.js:358:37
+      1    0.0%    0.0%  Builtin: ToString
+      1    0.0%    0.0%  Builtin: ToObject
+      1    0.0%    0.0%  Builtin: StringSubstring
+      1    0.0%    0.0%  Builtin: StringLessThan
+      1    0.0%    0.0%  Builtin: StringIndexOf
+      1    0.0%    0.0%  Builtin: StringEqual
+      1    0.0%    0.0%  Builtin: RegExpReplace
+      1    0.0%    0.0%  Builtin: ReflectApply
+      1    0.0%    0.0%  Builtin: ObjectGetOwnPropertyDescriptor
+      1    0.0%    0.0%  Builtin: LoadIC
+      1    0.0%    0.0%  Builtin: KeyedStoreIC_Megamorphic
+      1    0.0%    0.0%  Builtin: KeyedLoadIC
+      1    0.0%    0.0%  Builtin: GetProperty
+      1    0.0%    0.0%  Builtin: FastNewObject
+      1    0.0%    0.0%  Builtin: CreateTypedArray
+      1    0.0%    0.0%  Builtin: ConstructFunction
+      1    0.0%    0.0%  Builtin: CallVarargs
+      1    0.0%    0.0%  Builtin: ArrayReduce
+      1    0.0%    0.0%  Builtin: ArrayPrototypePush
+      1    0.0%    0.0%  Builtin: ArrayPop
+      1    0.0%    0.0%  Builtin: AdaptorWithExitFrame
+
+ [C++]:
+   ticks  total  nonlib   name
+    931   44.6%   45.4%  open
+    357   17.1%   17.4%  opendir
+    120    5.7%    5.9%  node::fs::InternalModuleStat(v8::FunctionCallbackInfo<v8::Value> const&)
+     89    4.3%    4.3%  node::contextify::ContextifyScript::New(v8::FunctionCallbackInfo<v8::Value> const&)
+     41    2.0%    2.0%  node::fs::Open(v8::FunctionCallbackInfo<v8::Value> const&)
+     27    1.3%    1.3%  _IO_file_close
+     26    1.2%    1.3%  mprotect
+     24    1.1%    1.2%  read
+     20    1.0%    1.0%  __fxstat
+     17    0.8%    0.8%  node::fs::LStat(v8::FunctionCallbackInfo<v8::Value> const&)
+     17    0.8%    0.8%  __lxstat
+     15    0.7%    0.7%  write
+     12    0.6%    0.6%  node::fs::InternalModuleReadJSON(v8::FunctionCallbackInfo<v8::Value> const&)
+     12    0.6%    0.6%  __lll_lock_wait
+      9    0.4%    0.4%  node::fs::Read(v8::FunctionCallbackInfo<v8::Value> const&)
+      9    0.4%    0.4%  node::fs::Close(v8::FunctionCallbackInfo<v8::Value> const&)
+      9    0.4%    0.4%  node::Buffer::(anonymous namespace)::IndexOfString(v8::FunctionCallbackInfo<v8::Value> const&)
+      7    0.3%    0.3%  writev
+      7    0.3%    0.3%  do_futex_wait.constprop.3
+      5    0.2%    0.2%  node::fs::ReadDir(v8::FunctionCallbackInfo<v8::Value> const&)
+      5    0.2%    0.2%  fwrite
+      5    0.2%    0.2%  epoll_ctl
+      4    0.2%    0.2%  node::contextify::ContextifyScript::RunInThisContext(v8::FunctionCallbackInfo<v8::Value> const&)
+      4    0.2%    0.2%  node::(anonymous namespace)::ProcessWrap::Spawn(v8::FunctionCallbackInfo<v8::Value> const&)
+      4    0.2%    0.2%  llseek
+      3    0.1%    0.1%  void node::Buffer::(anonymous namespace)::StringSlice<(node::encoding)1>(v8::FunctionCallbackInfo<v8::Value> const&)
+      3    0.1%    0.1%  v8::internal::TransitionsAccessor::Insert(v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Map>, v8::internal::SimpleTransitionFlag)
+      3    0.1%    0.1%  v8::internal::Scanner::Scan()
+      3    0.1%    0.1%  v8::internal::Factory::InitializeMap(v8::internal::Map*, v8::internal::InstanceType, int, v8::internal::ElementsKind, int)
+      3    0.1%    0.1%  node::fs::FStat(v8::FunctionCallbackInfo<v8::Value> const&)
+      3    0.1%    0.1%  __pthread_cond_wait
+      2    0.1%    0.1%  v8::internal::compiler::GraphReducer::Reduce(v8::internal::compiler::Node*)
+      2    0.1%    0.1%  v8::internal::StringTable::LookupStringIfExists_NoAllocate(v8::internal::String*)
+      2    0.1%    0.1%  v8::internal::String::IsOneByteEqualTo(v8::internal::Vector<unsigned char const>)
+      2    0.1%    0.1%  v8::internal::StackFrameIterator::StackFrameIterator(v8::internal::Isolate*)
+      2    0.1%    0.1%  v8::internal::ParserBase<v8::internal::Parser>::ParseLeftHandSideExpression(bool*)
+      2    0.1%    0.1%  v8::internal::Map::SetPrototype(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Object>, bool)
+      2    0.1%    0.1%  v8::internal::IncrementalMarkingRootMarkingVisitor::VisitRootPointers(v8::internal::Root, char const*, v8::internal::Object**, v8::internal::Object**)
+      2    0.1%    0.1%  v8::internal::FixedArray::set(int, v8::internal::Object*)
+      2    0.1%    0.1%  v8::internal::Factory::NewFixedArrayWithFiller(v8::internal::Heap::RootListIndex, int, v8::internal::Object*, v8::internal::PretenureFlag)
+      2    0.1%    0.1%  v8::internal::Factory::NewCodeForDeserialization(unsigned int)
+      2    0.1%    0.1%  v8::internal::ExpressionClassifier<v8::internal::ParserTypes<v8::internal::Parser> >::Accumulate(v8::internal::ExpressionClassifier<v8::internal::ParserTypes<v8::internal::Parser> >*, unsigned int)
+      2    0.1%    0.1%  searchForTZFile(char const*, DefaultTZInfo*)
+      2    0.1%    0.1%  node::crypto::SecureContext::AddRootCerts(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.1%    0.1%  node::GetInternalBinding(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.1%    0.1%  node::GetBinding(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.1%    0.1%  bool v8::base::AsAtomic32::SetBits<unsigned int>(unsigned int*, unsigned int, unsigned int)
+      2    0.1%    0.1%  __libc_malloc
+      1    0.0%    0.0%  void v8::internal::StringHasher::AddCharacters<unsigned char>(unsigned char const*, int)
+      1    0.0%    0.0%  void v8::internal::String::WriteToFlat<unsigned char>(v8::internal::String*, unsigned char*, int, int)
+      1    0.0%    0.0%  void v8::internal::Scanner::Advance<false, true>()
+      1    0.0%    0.0%  void v8::internal::LookupIterator::NextInternal<false>(v8::internal::Map*, v8::internal::JSReceiver*)
+      1    0.0%    0.0%  void v8::internal::BodyDescriptorBase::IteratePointers<v8::internal::MarkingVisitor<(v8::internal::FixedArrayVisitationMode)1, (v8::internal::TraceRetainingPathMode)1, v8::internal::IncrementalMarkingState> >(v8::internal::HeapObject*, int, int, v8::internal::MarkingVisitor<(v8::internal::FixedArrayVisitationMode)1, (v8::internal::TraceRetainingPathMode)1, v8::internal::IncrementalMarkingState>*)
+      1    0.0%    0.0%  v8::internal::interpreter::ConstantArrayBuilder::ToFixedArray(v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::interpreter::ConstantArrayBuilder::Insert(v8::internal::AstRawString const*)
+      1    0.0%    0.0%  v8::internal::interpreter::Bytecodes::GetOperandOffset(v8::internal::interpreter::Bytecode, int, v8::internal::interpreter::OperandScale)
+      1    0.0%    0.0%  v8::internal::interpreter::BytecodeRegisterOptimizer::PrepareOutputRegister(v8::internal::interpreter::Register)
+      1    0.0%    0.0%  v8::internal::interpreter::BytecodeGenerator::VisitNoStackOverflowCheck(v8::internal::AstNode*)
+      1    0.0%    0.0%  v8::internal::interpreter::BytecodeGenerator::VisitAndPushIntoRegisterList(v8::internal::Expression*, v8::internal::interpreter::RegisterList*)
+      1    0.0%    0.0%  v8::internal::interpreter::BytecodeArrayBuilder::Bind(v8::internal::interpreter::BytecodeLabel*)
+      1    0.0%    0.0%  v8::internal::interpreter::BytecodeArrayAccessor::GetConstantForIndexOperand(int) const
+      1    0.0%    0.0%  v8::internal::compiler::GraphTrimmer::TrimGraph()
+      1    0.0%    0.0%  v8::internal::ZoneList<v8::internal::ExpressionClassifier<v8::internal::ParserTypes<v8::internal::Parser> >::Error>::Add(v8::internal::ExpressionClassifier<v8::internal::ParserTypes<v8::internal::Parser> >::Error const&, v8::internal::Zone*)
+      1    0.0%    0.0%  v8::internal::Zone::~Zone()
+      1    0.0%    0.0%  v8::internal::Zone::New(unsigned long)
+      1    0.0%    0.0%  v8::internal::UpdateReferenceInExternalStringTableEntry(v8::internal::Heap*, v8::internal::Object**)
+      1    0.0%    0.0%  v8::internal::UnoptimizedCompilationInfo::SourcePositionRecordingMode() const
+      1    0.0%    0.0%  v8::internal::TransitionsAccessor::ReplaceTransitions(v8::internal::MaybeObject*)
+      1    0.0%    0.0%  v8::internal::Sweeper::RawSweep(v8::internal::Page*, v8::internal::Sweeper::FreeListRebuildingMode, v8::internal::FreeSpaceTreatmentMode)
+      1    0.0%    0.0%  v8::internal::StringHasher::GetHashField()
+      1    0.0%    0.0%  v8::internal::StoreBuffer::MoveEntriesToRememberedSet(int)
+      1    0.0%    0.0%  v8::internal::SpaceWithLinearArea::StartNextInlineAllocationStep()
+      1    0.0%    0.0%  v8::internal::Scavenger::Process(v8::internal::OneshotBarrier*)
+      1    0.0%    0.0%  v8::internal::Scanner::ScanString()
+      1    0.0%    0.0%  v8::internal::Scanner::ScanIdentifierOrKeywordInner(v8::internal::Scanner::LiteralScope*)
+      1    0.0%    0.0%  v8::internal::RuntimeProfiler::MaybeOptimize(v8::internal::JSFunction*, v8::internal::JavaScriptFrame*)
+      1    0.0%    0.0%  v8::internal::Runtime::SetObjectProperty(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, v8::internal::LanguageMode)
+      1    0.0%    0.0%  v8::internal::RootScavengeVisitor::VisitRootPointer(v8::internal::Root, char const*, v8::internal::Object**)
+      1    0.0%    0.0%  v8::internal::RememberedSetUpdatingItem<v8::internal::MajorNonAtomicMarkingState>::Process()
+      1    0.0%    0.0%  v8::internal::RelocIterator::next()
+      1    0.0%    0.0%  v8::internal::PropertyDescriptor::ToPropertyDescriptor(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyDescriptor*)
+      1    0.0%    0.0%  v8::internal::PerIsolateAssertScope<(v8::internal::PerIsolateAssertType)0, false>::PerIsolateAssertScope(v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::PreParser>::ParseStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, v8::internal::AllowLabelledFunctionStatement, bool*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::ParseStatementListItem(bool*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::ParseIdentifierNameOrPrivateName(bool*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::ParseIdentifierName(bool*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::ParseExpressionCoverGrammar(bool, bool*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::ParseBinaryExpression(int, bool, bool*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::BindingPatternUnexpectedToken()
+      1    0.0%    0.0%  v8::internal::Parser::ParseFunctionLiteral(v8::internal::AstRawString const*, v8::internal::Scanner::Location, v8::internal::FunctionNameValidity, v8::internal::FunctionKind, int, v8::internal::FunctionLiteral::FunctionType, v8::internal::LanguageMode, v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*)
+      1    0.0%    0.0%  v8::internal::Parser::ParseFunction(v8::internal::AstRawString const*, int, v8::internal::FunctionKind, v8::internal::FunctionLiteral::FunctionType, v8::internal::DeclarationScope*, int*, int*, bool*, int*, int*, v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*)
+      1    0.0%    0.0%  v8::internal::PagedSpace::SlowRefillLinearAllocationArea(int)
+      1    0.0%    0.0%  v8::internal::OrderedHashTable<v8::internal::OrderedHashMap, 2>::Rehash(v8::internal::Handle<v8::internal::OrderedHashMap>, int)
+      1    0.0%    0.0%  v8::internal::Object::OptimalType(v8::internal::Isolate*, v8::internal::Representation)
+      1    0.0%    0.0%  v8::internal::OFStreamBase::xsputn(char const*, long)
+      1    0.0%    0.0%  v8::internal::MemoryReducer::TimerTask::RunInternal()
+      1    0.0%    0.0%  v8::internal::MemoryChunk::Initialize(v8::internal::Heap*, unsigned long, unsigned long, unsigned long, unsigned long, v8::internal::Executability, v8::internal::Space*, v8::internal::VirtualMemory*)
+      1    0.0%    0.0%  v8::internal::MapUpdater::BuildDescriptorArray()
+      1    0.0%    0.0%  v8::internal::Map::WeakCellForMap(v8::internal::Handle<v8::internal::Map>)
+      1    0.0%    0.0%  v8::internal::Map::TransitionToDataProperty(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::PropertyConstness, v8::internal::Object::StoreFromKeyed)
+      1    0.0%    0.0%  v8::internal::LookupIterator::State v8::internal::LookupIterator::LookupInRegularHolder<false>(v8::internal::Map*, v8::internal::JSReceiver*)
+      1    0.0%    0.0%  v8::internal::LookupIterator::PropertyOrElement(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, bool*, v8::internal::LookupIterator::Configuration)
+      1    0.0%    0.0%  v8::internal::Logger::CodeCreateEvent(v8::internal::CodeEventListener::LogEventsAndTags, v8::internal::AbstractCode*, v8::internal::SharedFunctionInfo*, v8::internal::Name*, int, int)
+      1    0.0%    0.0%  v8::internal::Log::MessageBuilder::WriteToLogFile()
+      1    0.0%    0.0%  v8::internal::LoadIC::Load(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>)
+      1    0.0%    0.0%  v8::internal::JSObject::MigrateToMap(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Map>, int)
+      1    0.0%    0.0%  v8::internal::JSObject::MakePrototypesFast(v8::internal::Handle<v8::internal::Object>, v8::internal::WhereToStart, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::InternalizedStringTableCleaner::VisitPointers(v8::internal::HeapObject*, v8::internal::Object**, v8::internal::Object**)
+      1    0.0%    0.0%  v8::internal::IncrementalMarking::WhiteToGreyAndPush(v8::internal::HeapObject*)
+      1    0.0%    0.0%  v8::internal::IC::ShouldRecomputeHandler(v8::internal::Handle<v8::internal::String>)
+      1    0.0%    0.0%  v8::internal::IC::ConfigureVectorState(v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Map>, v8::internal::MaybeObjectHandle const&)
+      1    0.0%    0.0%  v8::internal::HashTable<v8::internal::NameDictionary, v8::internal::NameDictionaryShape>::Rehash(v8::internal::NameDictionary*)
+      1    0.0%    0.0%  v8::internal::FixedArray::set(int, v8::internal::Object*, v8::internal::WriteBarrierMode)
+      1    0.0%    0.0%  v8::internal::FeedbackNexus::ExtractMaps(std::vector<v8::internal::Handle<v8::internal::Map>, std::allocator<v8::internal::Handle<v8::internal::Map> > >*) const
+      1    0.0%    0.0%  v8::internal::Factory::NewForeign(unsigned long, v8::internal::PretenureFlag)
+      1    0.0%    0.0%  v8::internal::Factory::NewConsString(v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::String>)
+      1    0.0%    0.0%  v8::internal::Factory::InitializeJSObjectFromMap(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Map>)
+      1    0.0%    0.0%  v8::internal::Factory::InitializeJSObjectBody(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Map>, int)
+      1    0.0%    0.0%  v8::internal::Factory::CopyJSObjectWithAllocationSite(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::AllocationSite>)
+      1    0.0%    0.0%  v8::internal::Deserializer<v8::internal::DefaultDeserializerAllocator>::ReadData(v8::internal::MaybeObject**, v8::internal::MaybeObject**, int, unsigned long)
+      1    0.0%    0.0%  v8::internal::Deserializer<v8::internal::BuiltinDeserializerAllocator>::~Deserializer()
+      1    0.0%    0.0%  v8::internal::DescriptorArray::CopyUpToAddAttributes(v8::internal::Handle<v8::internal::DescriptorArray>, int, v8::internal::PropertyAttributes, int) [clone .constprop.632]
+      1    0.0%    0.0%  v8::internal::DescriptorArray::CopyFrom(int, v8::internal::DescriptorArray*)
+      1    0.0%    0.0%  v8::internal::DescriptorArray::Append(v8::internal::Descriptor*)
+      1    0.0%    0.0%  v8::internal::DeclarationScope::DeclareDefaultFunctionVariables(v8::internal::AstValueFactory*)
+      1    0.0%    0.0%  v8::internal::CompactionSpace::SlowRefillLinearAllocationArea(int)
+      1    0.0%    0.0%  v8::internal::Code::FlushICache() const
+      1    0.0%    0.0%  v8::internal::ChoiceNode::EmitChoices(v8::internal::RegExpCompiler*, v8::internal::AlternativeGenerationList*, int, v8::internal::Trace*, v8::internal::PreloadState*)
+      1    0.0%    0.0%  v8::internal::Builtin_StringPrototypeStartsWith(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Bitmap::Clear()
+      1    0.0%    0.0%  v8::internal::AstValueFactory::GetString(unsigned int, bool, v8::internal::Vector<unsigned char const>)
+      1    0.0%    0.0%  v8::internal::AstValueFactory::GetOneByteStringInternal(v8::internal::Vector<unsigned char const>)
+      1    0.0%    0.0%  v8::internal::AstRawString::Compare(void*, void*)
+      1    0.0%    0.0%  v8::internal::Assembler::call(v8::internal::Register)
+      1    0.0%    0.0%  v8::internal::Assembler::call(v8::internal::Label*)
+      1    0.0%    0.0%  v8::internal::AccountingAllocator::ReturnSegment(v8::internal::Segment*)
+      1    0.0%    0.0%  v8::internal::(anonymous namespace)::JSObjectWalkVisitor<v8::internal::(anonymous namespace)::DeprecationUpdateContext>::StructureWalk(v8::internal::Handle<v8::internal::JSObject>)
+      1    0.0%    0.0%  v8::base::bits::RoundUpToPowerOfTwo32(unsigned int)
+      1    0.0%    0.0%  std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+      1    0.0%    0.0%  std::__detail::_Prime_rehash_policy::_M_need_rehash(unsigned long, unsigned long, unsigned long) const
+      1    0.0%    0.0%  sha512_block_data_order
+      1    0.0%    0.0%  session_after_frame_sent2
+      1    0.0%    0.0%  node::fs::NewFSReqWrap(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  node::InternalCallbackScope::Close()
+      1    0.0%    0.0%  node::DLOpen(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  munmap
+      1    0.0%    0.0%  mmap
+      1    0.0%    0.0%  memchr
+      1    0.0%    0.0%  int v8::internal::BinarySearch<(v8::internal::SearchMode)1, v8::internal::DescriptorArray>(v8::internal::DescriptorArray*, v8::internal::Name*, int, int*)
+      1    0.0%    0.0%  int v8::internal::(anonymous namespace)::InitPrototypeChecksImpl<v8::internal::LoadHandler, true>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::LoadHandler>, v8::internal::Handle<v8::internal::Smi>*, v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::Handle<v8::internal::Object>, v8::internal::MaybeHandle<v8::internal::Object>) [clone .isra.19]
+      1    0.0%    0.0%  icu_62::CharString::append(char const*, int, UErrorCode&)
+      1    0.0%    0.0%  gcm_ghash_clmul
+      1    0.0%    0.0%  fopen
+      1    0.0%    0.0%  fclose
+      1    0.0%    0.0%  cfree
+      1    0.0%    0.0%  brk
+      1    0.0%    0.0%  aesni_ctr32_encrypt_blocks
+      1    0.0%    0.0%  _init
+      1    0.0%    0.0%  __pthread_cond_signal
+      1    0.0%    0.0%  __lll_unlock_wake
+      1    0.0%    0.0%  __bn_sqr8x_reduction
+      1    0.0%    0.0%  _IO_un_link
+      1    0.0%    0.0%  EVP_CIPHER_CTX_cipher
+
+ [Summary]:
+   ticks  total  nonlib   name
+     80    3.8%    3.9%  JavaScript
+   1943   93.0%   94.8%  C++
+     40    1.9%    2.0%  GC
+     40    1.9%          Shared libraries
+     26    1.2%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+    357   40.2%   17.1%  opendir
+    332   37.4%   15.9%  v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*)
+     51    5.7%    2.4%  v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+     17    1.9%    0.8%  v8::internal::Runtime_InterpreterDeserializeLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+     17    1.9%    0.8%  __lxstat
+     15    1.7%    0.7%  v8::internal::Runtime_DeserializeLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+     13    1.5%    0.6%  v8::internal::Builtin_FunctionConstructor(int, v8::internal::Object**, v8::internal::Isolate*)
+     11    1.2%    0.5%  v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      9    1.0%    0.4%  v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      8    0.9%    0.4%  v8::internal::Runtime_CompileOptimized_Concurrent(int, v8::internal::Object**, v8::internal::Isolate*)
+      7    0.8%    0.3%  v8::internal::Runtime_RegExpExec(int, v8::internal::Object**, v8::internal::Isolate*)
+      7    0.8%    0.3%  v8::internal::Builtin_JsonParse(int, v8::internal::Object**, v8::internal::Isolate*)
+      5    0.6%    0.2%  v8::internal::Runtime_CreateObjectLiteral(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.3%    0.1%  v8::internal::Runtime_KeyedGetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.3%    0.1%  v8::internal::Runtime_AddDictionaryProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.2%    0.1%  v8::internal::StringTable::LookupStringIfExists_NoAllocate(v8::internal::String*)
+      2    0.2%    0.1%  v8::internal::Runtime_StackGuard(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.2%    0.1%  v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.2%    0.1%  v8::internal::Runtime_NewObject(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.2%    0.1%  v8::internal::Runtime_NewClosure(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.2%    0.1%  v8::internal::Runtime_MapGrow(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.2%    0.1%  v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.2%    0.1%  v8::internal::Builtin_ObjectDefineProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.2%    0.1%  v8::internal::Builtin_ArrayBufferConstructor(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.2%    0.1%  searchForTZFile(char const*, DefaultTZInfo*)
+      1    0.1%    0.0%  void v8::internal::StringHasher::AddCharacters<unsigned char>(unsigned char const*, int)
+      1    0.1%    0.0%  void v8::internal::String::WriteToFlat<unsigned char>(v8::internal::String*, unsigned char*, int, int)
+      1    0.1%    0.0%  v8::internal::StringHasher::GetHashField()
+      1    0.1%    0.0%  v8::internal::Runtime_StringBuilderJoin(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime_SetDataProperties(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime_RegExpReplace(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime_Interrupt(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Builtin_StringPrototypeStartsWith(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Builtin_ArrayConcat(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  memchr
+      1    0.1%    0.0%  icu_62::CharString::append(char const*, int, UErrorCode&)
+      1    0.1%    0.0%  fopen
+      1    0.1%    0.0%  _init
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+    931   44.6%  open
+
+    357   17.1%  opendir
+    357  100.0%    Builtin: DatePrototypeGetMilliseconds
+    357  100.0%      LazyCompile: ~utcDate internal/http.js:6:17
+    357  100.0%        LazyCompile: ~processHeaders internal/http2/core.js:2013:24
+    357  100.0%          LazyCompile: ~respond internal/http2/core.js:2324:10
+    357  100.0%            LazyCompile: ~listener /mnt/c/Users/xelox/Projects/Node/2test/server/dist/index.js:22:13
+
+    120    5.7%  node::fs::InternalModuleStat(v8::FunctionCallbackInfo<v8::Value> const&)
+    120  100.0%    v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*)
+    120  100.0%      LazyCompile: ~stat internal/modules/cjs/loader.js:82:14
+     73   60.8%        LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:219:28
+     73  100.0%          LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:546:35
+     73  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:501:24
+     47   39.2%        LazyCompile: ~tryFile internal/modules/cjs/loader.js:192:17
+     43   91.5%          LazyCompile: ~tryExtensions internal/modules/cjs/loader.js:207:23
+     43  100.0%            LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:219:28
+      4    8.5%          LazyCompile: ~tryPackage internal/modules/cjs/loader.js:172:20
+      4  100.0%            LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:219:28
+
+     89    4.3%  node::contextify::ContextifyScript::New(v8::FunctionCallbackInfo<v8::Value> const&)
+     89  100.0%    v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*)
+     61   68.5%      LazyCompile: ~Script vm.js:43:14
+     61  100.0%        LazyCompile: ~createScript vm.js:250:22
+     61  100.0%          LazyCompile: ~runInThisContext vm.js:299:26
+     61  100.0%            LazyCompile: ~Module._compile internal/modules/cjs/loader.js:649:37
+     28   31.5%      LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+     28  100.0%        LazyCompile: ~NativeModule.require internal/bootstrap/loaders.js:140:34
+      4   14.3%          Script: ~<anonymous> util.js:1:11
+      4  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      2    7.1%          Script: ~<anonymous> tls.js:1:11
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      2    7.1%          Script: ~<anonymous> stream.js:1:11
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      2    7.1%          Script: ~<anonymous> internal/http2/core.js:1:11
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      2    7.1%          Script: ~<anonymous> internal/async_hooks.js:1:11
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      2    7.1%          Script: ~<anonymous> http2.js:1:11
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      2    7.1%          Script: ~<anonymous> crypto.js:1:11
+      2  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      2    7.1%          LazyCompile: ~startup internal/bootstrap/node.js:30:19
+      2  100.0%            Script: ~bootstrapNodeJSCore internal/bootstrap/node.js:15:30
+      1    3.6%          Script: ~<anonymous> tty.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      1    3.6%          Script: ~<anonymous> internal/process/main_thread_only.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      1    3.6%          Script: ~<anonymous> internal/modules/cjs/loader.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      1    3.6%          Script: ~<anonymous> internal/fs/streams.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      1    3.6%          Script: ~<anonymous> internal/crypto/cipher.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      1    3.6%          Script: ~<anonymous> internal/child_process.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      1    3.6%          Script: ~<anonymous> buffer.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      1    3.6%          Script: ~<anonymous> assert.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      1    3.6%          Script: ~<anonymous> _http_client.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      1    3.6%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:501:24
+      1  100.0%            LazyCompile: ~Module.require internal/modules/cjs/loader.js:628:36
+
+     41    2.0%  node::fs::Open(v8::FunctionCallbackInfo<v8::Value> const&)
+     41  100.0%    v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*)
+     41  100.0%      LazyCompile: ~openSync fs.js:426:18
+     37   90.2%        LazyCompile: ~readFileSync fs.js:338:22
+     35   94.6%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:697:37
+     35  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:589:33
+      1    2.7%          LazyCompile: ~Module._extensions..json internal/modules/cjs/loader.js:704:39
+      1  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:589:33
+      1    2.7%          LazyCompile: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/uglify-js/tools/node.js:27:60
+      1  100.0%            Builtin: ArrayMap
+      4    9.8%        LazyCompile: ~fnames.forEach.fname /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/helpers/loadFiles.js:12:40
+      4  100.0%          Builtin: ArrayForEach
+      4  100.0%            LazyCompile: ~fs_extra_1.default.readdir.then.fnames /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/helpers/loadFiles.js:12:15
+
+     27    1.3%  _IO_file_close
+
+     26    1.2%  mprotect
+     12   46.2%    v8::internal::Runtime_DeserializeLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    8.3%      Script: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/core-js/library/modules/_iobject.js:1:11
+      1  100.0%        LazyCompile: ~Module._compile internal/modules/cjs/loader.js:649:37
+      1  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:697:37
+      1  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:589:33
+      1    8.3%      LazyCompile: ~updateChildren internal/modules/cjs/loader.js:95:24
+      1  100.0%        LazyCompile: ~Module._load internal/modules/cjs/loader.js:501:24
+      1  100.0%          LazyCompile: ~Module.require internal/modules/cjs/loader.js:628:36
+      1  100.0%            LazyCompile: ~require internal/modules/cjs/helpers.js:17:19
+      1    8.3%      LazyCompile: ~retry /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/graceful-fs/graceful-fs.js:256:16
+      1  100.0%        LazyCompile: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/graceful-fs/graceful-fs.js:48:59
+      1  100.0%          LazyCompile: ~readFileSync fs.js:338:22
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:697:37
+      1    8.3%      LazyCompile: ~parse /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/minimatch/minimatch.js:271:16
+      1  100.0%        Builtin: ArrayMap
+      1  100.0%          LazyCompile: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/minimatch/minimatch.js:181:26
+      1  100.0%            Builtin: ArrayMap
+      1    8.3%      LazyCompile: ~module.exports /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/core-js/library/modules/_uid.js:3:27
+      1  100.0%        Script: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/core-js/library/modules/_meta.js:1:11
+      1  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:649:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:697:37
+      1    8.3%      LazyCompile: ~__awaiter /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/index.js:2:54
+      1  100.0%        LazyCompile: ~Rutux /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/index.js:51:10
+      1  100.0%          LazyCompile: ~Rutux /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/index.js:24:16
+      1  100.0%            Script: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/dist/index.js:1:11
+      1    8.3%      LazyCompile: ~PARENS :4449:20
+      1  100.0%        Eval: ~<anonymous> :4341:10
+      1  100.0%          Eval: ~<anonymous> :1:20
+      1  100.0%            Script: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/uglify-js/tools/node.js:1:11
+      1    8.3%      LazyCompile: ~NativeModule.exists internal/bootstrap/loaders.js:188:33
+      1  100.0%        LazyCompile: ~NativeModule.require internal/bootstrap/loaders.js:140:34
+      1  100.0%          LazyCompile: ~startup internal/bootstrap/node.js:30:19
+      1  100.0%            Script: ~bootstrapNodeJSCore internal/bootstrap/node.js:15:30
+      1    8.3%      LazyCompile: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/index.js:67:58
+      1  100.0%        Builtin: GeneratorPrototypeNext
+      1  100.0%          LazyCompile: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/index.js:3:46
+      1  100.0%            LazyCompile: ~__awaiter /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/index.js:2:54
+      1    8.3%      Builtin: StringPrototypeMatch
+      1  100.0%        LazyCompile: ~GlobSync._processReaddir /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/glob/sync.js:136:47
+      1  100.0%          LazyCompile: ~GlobSync._process /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/glob/sync.js:77:40
+      1  100.0%            LazyCompile: ~GlobSync /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/glob/sync.js:29:19
+      1    8.3%      Builtin: RegExpPrototypeFlagsGetter
+      1  100.0%        Builtin: CEntry_Return1_DontSaveFPRegs_ArgvOnStack_BuiltinExit
+      1  100.0%          Builtin: CEntry_Return1_DontSaveFPRegs_ArgvOnStack_NoBuiltinExit
+      1  100.0%            LazyCompile: ~ConvertToString native array.js:125:25
+      1    8.3%      Builtin: CEntry_Return1_DontSaveFPRegs_ArgvOnStack_NoBuiltinExit
+      1  100.0%        LazyCompile: ~toString buffer.js:644:46
+      1  100.0%          LazyCompile: ~readFileSync fs.js:338:22
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:697:37
+      8   30.8%    v8::internal::Runtime_InterpreterDeserializeLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      2   25.0%      Script: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/clean-css/lib/optimizer/level-2/compactable.js:1:11
+      2  100.0%        LazyCompile: ~Module._compile internal/modules/cjs/loader.js:649:37
+      2  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:697:37
+      2  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:589:33
+      1   12.5%      Script: ~<anonymous> buffer.js:1:11
+      1  100.0%        LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      1  100.0%          LazyCompile: ~NativeModule.require internal/bootstrap/loaders.js:140:34
+      1  100.0%            Script: ~<anonymous> util.js:1:11
+      1   12.5%      Script: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/is-expression/node_modules/acorn/dist/acorn.js:5:19
+      1  100.0%        Script: ~reservedWords.3 /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/is-expression/node_modules/acorn/dist/acorn.js:1:73
+      1  100.0%          Script: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/is-expression/node_modules/acorn/dist/acorn.js:1:11
+      1  100.0%            LazyCompile: ~Module._compile internal/modules/cjs/loader.js:649:37
+      1   12.5%      LazyCompile: ~pp$6.processComment /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/babylon/lib/index.js:4498:32
+      1  100.0%        LazyCompile: ~finishNodeAt /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/babylon/lib/index.js:4423:22
+      1  100.0%          LazyCompile: ~pp$4.finishNode /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/babylon/lib/index.js:4433:28
+      1  100.0%            LazyCompile: ~pp$3.parseLiteral /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/babylon/lib/index.js:3775:30
+      1   12.5%      LazyCompile: ~isUint32 internal/validators.js:13:18
+      1  100.0%        LazyCompile: ~readFileSync fs.js:338:22
+      1  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:697:37
+      1  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:589:33
+      1   12.5%      LazyCompile: ~isSignal internal/process/main_thread_only.js:73:20
+      1  100.0%        LazyCompile: ~<anonymous> internal/process/main_thread_only.js:78:37
+      1  100.0%          LazyCompile: ~emit events.js:140:44
+      1  100.0%            LazyCompile: ~_addListener events.js:193:22
+      1   12.5%      LazyCompile: ~FastBuffer buffer.js:80:1
+      1  100.0%        LazyCompile: ~allocate buffer.js:319:18
+      1  100.0%          LazyCompile: ~allocUnsafe buffer.js:291:42
+      1  100.0%            LazyCompile: ~tryCreateBuffer fs.js:311:25
+      3   11.5%    v8::internal::Runtime_RegExpExec(int, v8::internal::Object**, v8::internal::Isolate*)
+      3  100.0%      Builtin: RegExpPrototypeExec
+      2   66.7%        LazyCompile: ~scanEndOfLine /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/pug-lexer/index.js:197:27
+      1   50.0%          LazyCompile: ~case /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/pug-lexer/index.js:766:19
+      1  100.0%            LazyCompile: ~callLexerFunction /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/pug-lexer/index.js:1444:31
+      1   50.0%          LazyCompile: ~blockCode /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/pug-lexer/index.js:1046:22
+      1  100.0%            LazyCompile: ~callLexerFunction /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/pug-lexer/index.js:1444:31
+      1   33.3%        LazyCompile: ~call /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/pug-lexer/index.js:828:17
+      1  100.0%          LazyCompile: ~callLexerFunction /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/pug-lexer/index.js:1444:31
+      1  100.0%            LazyCompile: ~advance /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/pug-lexer/index.js:1465:20
+      1    3.8%    v8::internal::Runtime_RegExpReplace(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      Builtin: StringPrototypeReplace
+      1  100.0%        Script: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/lodash/_baseIsNative.js:1:11
+      1  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:649:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:697:37
+
+     26    1.2%  UNKNOWN
+      8   30.8%    v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*)
+      3   37.5%      LazyCompile: ~module.exports.renderSync /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/node-sass/lib/index.js:386:37
+      3  100.0%        LazyCompile: ~fnames.map.fname /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/index.js:143:44
+      3  100.0%          Builtin: ArrayMap
+      3  100.0%            LazyCompile: ~fs_extra_1.default.readdir.then.then.fnames /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/index.js:143:23
+      1    3.8%    LazyCompile: ~respondWithFD internal/http2/core.js:2386:16
+      1  100.0%      LazyCompile: ~stream.pushStream /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/index.js:95:92
+      1  100.0%        LazyCompile: ~_tickCallback internal/process/next_tick.js:41:25
+      1    3.8%    LazyCompile: ~onconnection net.js:1489:22
+      1    3.8%    LazyCompile: ~nextTick internal/process/next_tick.js:96:20
+      1  100.0%      LazyCompile: ~onSessionHeaders internal/http2/core.js:245:26
+      1    3.8%    LazyCompile: ~createSecureContext _tls_common.js:72:59
+      1  100.0%      LazyCompile: ~Server _tls_wrap.js:849:16
+      1  100.0%        LazyCompile: ~Http2SecureServer internal/http2/core.js:2718:14
+      1  100.0%          LazyCompile: ~createSecureServer internal/http2/core.js:2842:28
+      1  100.0%            LazyCompile: ~Rutux /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/index.js:24:16
+      1    3.8%    LazyCompile: ~binding internal/bootstrap/loaders.js:77:39
+      1  100.0%      Script: ~bootstrapInternalLoaders internal/bootstrap/loaders.js:42:35
+
+     24    1.1%  read
+
+     21    1.0%  /lib/x86_64-linux-gnu/libc-2.23.so
+      3   14.3%    Builtin: DatePrototypeGetMilliseconds
+      3  100.0%      LazyCompile: ~utcDate internal/http.js:6:17
+      3  100.0%        LazyCompile: ~processHeaders internal/http2/core.js:2013:24
+      3  100.0%          LazyCompile: ~respond internal/http2/core.js:2324:10
+      3  100.0%            LazyCompile: ~listener /mnt/c/Users/xelox/Projects/Node/2test/server/dist/index.js:22:13
+      2    9.5%    v8::internal::Builtin_FunctionConstructor(int, v8::internal::Object**, v8::internal::Isolate*)
+      2  100.0%      Script: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/uglify-js/tools/node.js:1:11
+      2  100.0%        LazyCompile: ~Module._compile internal/modules/cjs/loader.js:649:37
+      2  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:697:37
+      2  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:589:33
+      1    4.8%    v8::internal::Runtime_StringBuilderJoin(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~DoJoin native array.js:87:16
+      1  100.0%        LazyCompile: ~Join native array.js:112:14
+      1  100.0%          LazyCompile: ~InnerArrayJoin native array.js:267:24
+      1  100.0%            LazyCompile: ~join native array.js:280:46
+      1    4.8%    v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~defineType /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/babel-types/lib/definitions/index.js:197:20
+      1  100.0%        Script: ~<anonymous> /mnt/c/Users/xelox/Projects/Node/2test/server/node_modules/babel-types/lib/definitions/core.js:1:11
+      1  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:649:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:697:37
+      1    4.8%    v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~_addListener events.js:193:22
+      1  100.0%        LazyCompile: ~addListener events.js:258:58
+      1  100.0%          LazyCompile: ~Http2SecureServer internal/http2/core.js:2718:14
+      1  100.0%            LazyCompile: ~createSecureServer internal/http2/core.js:2842:28
+      1    4.8%    v8::internal::Runtime_KeyedGetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:219:28
+      1  100.0%        LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:546:35
+      1  100.0%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:501:24
+      1  100.0%            LazyCompile: ~Module.require internal/modules/cjs/loader.js:628:36
+      1    4.8%    v8::internal::Runtime_InterpreterDeserializeLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~setupProcessICUVersions internal/bootstrap/node.js:529:35
+      1  100.0%        LazyCompile: ~startup internal/bootstrap/node.js:30:19
+      1  100.0%          Script: ~bootstrapNodeJSCore internal/bootstrap/node.js:15:30
+      1    4.8%    v8::internal::Runtime_DeserializeLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      Script: ~<anonymous> internal/process/promises.js:1:11
+      1  100.0%        LazyCompile: ~NativeModule.compile internal/bootstrap/loaders.js:236:44
+      1  100.0%          LazyCompile: ~NativeModule.require internal/bootstrap/loaders.js:140:34
+      1  100.0%            LazyCompile: ~setupNextTick internal/process/next_tick.js:5:23
+      1    4.8%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~fnames.forEach.fname /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/helpers/loadFiles.js:12:40
+      1  100.0%        Builtin: ArrayForEach
+      1  100.0%          LazyCompile: ~fs_extra_1.default.readdir.then.fnames /mnt/c/Users/xelox/Projects/Node/2test/server/dist/rutux/helpers/loadFiles.js:12:15
+      1    4.8%    v8::internal::Builtin_JsonParse(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~readPackage internal/modules/cjs/loader.js:151:21
+      1  100.0%        LazyCompile: ~tryPackage internal/modules/cjs/loader.js:172:20
+      1  100.0%          LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:219:28
+      1  100.0%            LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:546:35
+      1    4.8%    LazyCompile: ~realpathSync fs.js:1373:22
+      1  100.0%      LazyCompile: ~toRealPath internal/modules/cjs/loader.js:200:20
+      1  100.0%        LazyCompile: ~tryFile internal/modules/cjs/loader.js:192:17
+      1  100.0%          LazyCompile: ~tryExtensions internal/modules/cjs/loader.js:207:23
+      1  100.0%            LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:219:28
+

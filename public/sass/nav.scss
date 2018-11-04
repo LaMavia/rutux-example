@@ -1,0 +1,87 @@
+@import "./_breakpoints.scss";
+:root {
+  --nav-w: 20em;
+  --nav-h: 100vh;
+  --nav-item-h: 2.6rem;
+  --nav-logo-h: calc(var(--nav-item-h) * 1.618);
+  --nav-item-fs: calc(var(--nav-item-h) / 2.6);
+  --nav-logo-color: #2c2c2c;
+}
+
+@include phone {
+  :root {
+    --nav-w: calc(100vw - var(--nav-logo-h))
+  }
+}
+
+.nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  transform: translateX(-100%);
+  width: var(--nav-w);
+  height: var(--nav-h);
+  background-color: #fefefe;
+  transition: 
+    transform .15s 0s ease-out,
+    box-shadow .015s 0s ease-out
+  ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  &--visible {
+    transform: translateX(0%);
+    box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.6);
+  }
+
+  &__btn {
+    $size: var(--nav-logo-h);
+    position: absolute;
+    right: calc(var(--nav-logo-h) * -1);
+    width: $size;
+    height: $size;
+    border: none;
+    background-color: var(--nav-logo-color);
+    color: #fefefe;
+    font-size: calc(var(--nav-logo-h) / 3.4);
+    cursor: pointer;
+  }
+
+  &__items {
+    list-style: none;
+    overflow: auto;
+    width: var(--nav-w);
+
+    &__item {
+      height: var(--nav-item-h);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      &--logo {
+        height: var(--nav-logo-h);
+        padding: 2% 0;
+        background-color: var(--nav-logo-color);
+
+        .nav__items__item__link {
+          height: 100%;
+          width: auto;
+        }
+      }
+
+      &__link {
+        color: #1b1b1b;
+        text-align: center;
+        font-size: var(--nav-item-fs);
+        text-decoration: none;
+        align-self: center;
+        text-transform: uppercase;
+        width: 100%;
+
+        &__img {
+          height: 100%;
+        }
+      }
+    }
+  }
+}

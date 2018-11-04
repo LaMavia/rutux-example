@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "files": [
+		"./src/rutux/index.ts"
+	],
+	"include": [
+		"./src/rutux/**/*"
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "./rutux/",
+		"rootDir": "./src/rutux/"
+  }
+}

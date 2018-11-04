@@ -1,0 +1,38 @@
+:root {
+  --header-title-fs: 3.9rem;
+  --header-sub-fs: calc(var(--header-title-fs) / 1.168 / 4)
+; }
+
+.header {
+  transform-style: preserve-3d;
+  perspective: 1px;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center; }
+  .header__logo {
+    height: 20vh;
+    width: 20vh;
+    align-self: center; }
+  .header__text {
+    font-family: monospace;
+    margin-bottom: 3vh; }
+    .header__text__title {
+      font-size: var(--header-title-fs);
+      color: #ffffff;
+      text-transform: uppercase; }
+    .header__text__sub {
+      font-size: var(--header-sub-fs);
+      color: #eeeeee;
+      text-transform: lowercase; }
+  .header__code {
+    border-radius: 0;
+    font-size: 13px;
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap !important; }

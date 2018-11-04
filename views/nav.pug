@@ -1,0 +1,13 @@
+// Nav Template
+nav(data-js="nav").nav
+  button(data-js="nav-btn").nav__btn >
+  ul.nav__items
+    li.nav__items__item.nav__items__item--logo
+      a(href="/").nav__items__item__link
+        img(src="/img/logo.svg", alt="").nav__items__item__link__img
+    for item in items
+      li.nav__items__item
+        a(href= item.href).nav__items__item__link #{item.name}
+// Nav Resources
+link(rel="stylesheet", href="/css/nav.css")
+script(src="./js/nav.js" async)

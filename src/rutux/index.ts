@@ -5,25 +5,31 @@ import path from 'path'
 import sass from 'node-sass'
 import { loadFiles, LoadFilesResponse } from './helpers/loadFiles'
 import cp from 'child_process'
-import { parseQuery } from './helpers/parseQuery';
-import handleRefusedStream from './helpers/handleRefusedStream';
+import { parseQuery } from './helpers/parseQuery'
+import handleRefusedStream from './helpers/handleRefusedStream'
+import cluster from 'cluster'
+import os from 'os'
 
 interface IncomingObject {
 	stream: http.ServerHttp2Stream
 	headers: http.IncomingHttpHeaders
 	flag: number
-	query: {[key: string]: string}
+	query: { [key: string]: string }
 }
 
 interface Middleware {
 	method: string
-	listener: (req: IncomingObject, next: Middleware | (() => void)) => void
+	listener: (
+		this: Rutux,
+		req: IncomingObject,
+		next: Middleware | (() => void)
+	) => void
 }
 
 interface Route {
 	method: 'GET' | 'POST' | 'PUSH' | '*'
 	path: string
-	listener: (self: Rutux, req: IncomingObject) => void
+	listener: (this: Rutux, req: IncomingObject) => void
 }
 
 interface CompilerOptions {
@@ -40,6 +46,14 @@ interface Templates {
 	[name: string]: pug.compileTemplate
 }
 
+interface RutuxOptions {
+	secure?: boolean
+	templatesDir: string
+	publicDir: string
+	sassOptions: SassOptions
+	tsOptions: TsOptions
+}
+
 export default class Rutux {
 	app: http.Http2Server
 	port: number = 8000
@@ -48,42 +62,73 @@ export default class Rutux {
 	routes: Route[] = []
 	sassOptions: SassOptions
 	tsOptions: TsOptions
+	serverOptions: RutuxOptions
 	files: Map<string, LoadFilesResponse>
 	stdin: NodeJS.Socket
+	tsCompiler: cp.ChildProcess | null = null
 	static validMethods = ['GET', 'POST', 'PUSH', '*']
+	static defaultServerOptions: RutuxOptions = {
+		secure: false,
+		sassOptions: {
+			ext: ".scss",
+			in: "./public/scss",
+			out: "./public/css"
+		},
+		tsOptions: {
+			ext: ".ts",
+			in: "./public/ts",
+			out: "./public/js"
+		},
+		publicDir: path.resolve(__dirname, '..', 'public'),
+		templatesDir: path.resolve(__dirname, '..', 'views')
+	}
 
 	constructor(
-		templatesDir: string,
-		publicDir: string,
-		sassOptions: SassOptions,
-		tsOptions: TsOptions
+		options: RutuxOptions
 	) {
+		this.serverOptions = Object.assign(
+			{},
+			Rutux.defaultServerOptions,
+			options
+		)
+
+		const { sassOptions, tsOptions, templatesDir, publicDir } = this.serverOptions
+
 		this.files = new Map()
 		this.sassOptions = {
 			...sassOptions,
-			in: path.resolve(__dirname, '..', sassOptions.in),
-			out: path.resolve(__dirname, '..', sassOptions.out),
+			in: path.resolve(__dirname, '../..', sassOptions.in),
+			out: path.resolve(__dirname, '../..', sassOptions.out),
 		}
 		this.tsOptions = {
 			...tsOptions,
-			in: path.resolve(__dirname, '..', tsOptions.in),
-			out: path.resolve(__dirname, '..', tsOptions.out),
+			in: path.resolve(__dirname, '../..', tsOptions.in),
+			out: path.resolve(__dirname, '../..', tsOptions.out),
 		}
-		this.app = http.createSecureServer({
-			cert: fs.readFileSync(path.resolve(__dirname, '..', 'localhost.crt')),
-			key: fs.readFileSync(path.resolve(__dirname, '..', 'localhost.key')),
-		})
-		// Appending events
-		this.app.on('sessionError', console.error)
-		this.app.on('stream', this.onStream.bind(this))
+
+			const cert = fs.readFileSync(
+				path.resolve(__dirname, '../..', 'localhost.crt')
+			)
+			const key = fs.readFileSync(
+				path.resolve(__dirname, '../..', 'localhost.key')
+			)
+			this.app = http.createSecureServer({
+				cert,
+				key,
+			})
+
 		// Setup stdin
 		this.stdin = process.openStdin()
 		this.stdin.addListener('data', this.inputHandler.bind(this))
+		// Appending events
+		this.app.on('sessionError', console.error)
+		this.app.on('stream', this.onStream.bind(this))
 		// Prelaunch calls
 		;(async () => {
 			await this.compileTemplates(templatesDir).catch(console.error)
 			await this.compileSass().catch(console.error)
-			await this.compileTs().catch(console.log)
+			if (this.isDev()) await this.watchTs().catch(console.error)
+			// await this.compileTs().catch(console.log)
 
 			// Load files
 			for (const dir of ['/css', '/js', '/img']) {
@@ -95,7 +140,7 @@ export default class Rutux {
 		})
 	}
 
-	onStream(
+	async onStream(
 		stream: http.ServerHttp2Stream,
 		headers: http.IncomingHttpHeaders,
 		flag: number
@@ -109,7 +154,8 @@ export default class Rutux {
 		for (const [i, mdw] of this.middleware.entries()) {
 			const query = parseQuery(path)
 			if (mdw.method === method)
-				mdw.listener(
+				await mdw.listener.call(
+					this,
 					{ stream, headers, flag, query },
 					i < this.middleware.length - 1 ? this.middleware[i + 1] : () => {}
 				)
@@ -138,7 +184,7 @@ export default class Rutux {
 				{ [http.constants['HTTP2_HEADER_PATH']]: asset },
 				(err, push) => {
 					if (err) throw err
-					push.on("error", handleRefusedStream(push))
+					push.on('error', handleRefusedStream(push))
 					file &&
 						push.respondWithFD(file.fileDescriptor, {
 							...file.headers,
@@ -149,7 +195,10 @@ export default class Rutux {
 		}
 	}
 
-	private compileTs(): Promise<void> {
+	/**
+	 * @deprecated
+	 */
+	compileTs(): Promise<void> {
 		return new Promise((res, rej) => {
 			const { ext, out } = this.tsOptions
 			fs.readdir(this.tsOptions.in)
@@ -170,6 +219,31 @@ export default class Rutux {
 				})
 				.then(res)
 				.catch(rej)
+		})
+	}
+
+	watchTs(): Promise<cp.ChildProcess> {
+		return new Promise((res, rej) => {
+			try {
+				this.tsCompiler = cp.exec(
+					`tsc ${path.resolve(
+						this.tsOptions.in
+					)}/*.ts -w --target ES6 --outDir ${path.resolve(this.tsOptions.out)}`
+				)
+
+				const handler = (err: Error | null = null) => {
+					typeof err !== 'undefined' && console.error(err)
+					this.tsCompiler && this.tsCompiler.killed && this.tsCompiler.kill()
+				}
+
+				this.tsCompiler.on('error', handler)
+				this.tsCompiler.on('close', handler)
+				this.tsCompiler.on('exit', handler)
+
+				res(this.tsCompiler)
+			} catch (err) {
+				rej(err)
+			}
 		})
 	}
 
@@ -204,7 +278,7 @@ export default class Rutux {
 		})
 	}
 
-	private compileTemplates(dir: string): Promise<Templates> {
+	compileTemplates(dir: string): Promise<Templates> {
 		return new Promise((res, rej) => {
 			if (!dir) return rej('Templates directory not found')
 
@@ -229,6 +303,7 @@ export default class Rutux {
 
 	private inputHandler(_d: any) {
 		const d = String(_d).trim()
+		if(["rs"].some(x => x === d)) return
 		;(function() {
 			// @ts-ignore
 			function print(txt: any, ...args) {
@@ -242,20 +317,22 @@ export default class Rutux {
 		}.bind(this)())
 	}
 
-	private route(
+	private async route(
 		path: string,
 		method: string,
 		stream: http.ServerHttp2Stream,
 		headers: http.IncomingHttpHeaders,
 		flag: number
 	) {
-		const route = this.routes.find(
-			r => (r.method === method || r.method === '*') && r.path === path.replace(/\?(.*)/g, '')
+		const route = this.routes&&this.routes.find(
+			r =>
+				(r.method === method || r.method === '*') &&
+				r.path === path.replace(/\?(.*)/g, '')
 		)
 		if (route) {
 			const query = parseQuery(path)
-			route.listener(this, { stream, headers, flag, query})
-			if(!stream.closed) stream.close()
+			await route.listener.call(this, { stream, headers, flag, query })
+			if (!stream.closed) stream.close()
 		} else {
 			stream.respond({
 				':status': 404,
@@ -298,12 +375,40 @@ export default class Rutux {
 		return null
 	}
 
-	render(stream: Http2Stream, template: string, props: {[key: string]: any} = {}): Error | null {
-		const _t = this.templates[template]
-		if(!_t || typeof _t !== 'function') return new Error("Template is either undefined or not a function")
-		
-		stream.write(_t(props)) 
+	render(
+		stream: Http2Stream,
+		template: string,
+		props: { [key: string]: any } = {}
+	): Error | null {
+		const t = this.templates[template]
+		if (!t || typeof t !== 'function')
+			return new Error('Template is either undefined or not a function')
+
+		stream.write(t(props))
 		return null
+	}
+
+	readBody(stream: Http2Stream): Promise<string | Buffer> {
+		return new Promise((res, rej) => {
+			if (!stream.readable) rej(new Error('Stream is not readable'))
+			stream.on('data', value => {
+				let toRes
+
+				// Check if payload is JSON
+				try {
+					toRes = JSON.parse(String(value))
+				} catch (e) {
+					// Payload is not a JSON
+					toRes = String(value)
+				}
+
+				res(toRes)
+			})
+		})
+	}
+
+	isDev(): boolean {
+		return process.env['NODE_ENV'] !== 'production'
 	}
 
 	apport(port: number = this.port) {
