@@ -59,6 +59,7 @@ app.hook({
 			'content-type': 'application/json',
 			':status': 200,
 		})
+
 		this.readBody(stream).then(console.log)
 		stream.end(
 			JSON.stringify({
