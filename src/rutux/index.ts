@@ -7,8 +7,8 @@ import { loadFiles, LoadFilesResponse } from './helpers/loadFiles'
 import cp from 'child_process'
 import { parseQuery } from './helpers/parseQuery'
 import handleRefusedStream from './helpers/handleRefusedStream'
-import cluster from 'cluster'
-import os from 'os'
+import { Statux, StatuxState } from './statux';
+import { throwError } from 'querifier';
 
 interface IncomingObject {
 	stream: http.ServerHttp2Stream
@@ -52,6 +52,9 @@ interface RutuxOptions {
 	publicDir: string
 	sassOptions: SassOptions
 	tsOptions: TsOptions
+	keyPath: string
+	certPath: string
+	initialState?: StatuxState
 }
 
 export default class Rutux {
@@ -80,8 +83,11 @@ export default class Rutux {
 			out: "./public/js"
 		},
 		publicDir: path.resolve(__dirname, '..', 'public'),
-		templatesDir: path.resolve(__dirname, '..', 'views')
+		templatesDir: path.resolve(__dirname, '..', 'views'),
+		keyPath: path.resolve(__dirname, '../..', 'localhost.key'),
+		certPath: path.resolve(__dirname, '../..', 'localhost.crt')
 	}
+	store: Statux
 
 	constructor(
 		options: RutuxOptions
@@ -92,7 +98,7 @@ export default class Rutux {
 			options
 		)
 
-		const { sassOptions, tsOptions, templatesDir, publicDir } = this.serverOptions
+		const { sassOptions, tsOptions, templatesDir, publicDir, initialState } = this.serverOptions
 
 		this.files = new Map()
 		this.sassOptions = {
@@ -106,17 +112,14 @@ export default class Rutux {
 			out: path.resolve(__dirname, '../..', tsOptions.out),
 		}
 
-			const cert = fs.readFileSync(
-				path.resolve(__dirname, '../..', 'localhost.crt')
-			)
-			const key = fs.readFileSync(
-				path.resolve(__dirname, '../..', 'localhost.key')
-			)
+			const cert = fs.readFileSync(options.certPath)
+			const key  = fs.readFileSync(options.keyPath)
 			this.app = http.createSecureServer({
 				cert,
 				key,
 			})
-
+		// Setup the Statux store
+		this.store = new Statux(initialState || {})
 		// Setup stdin
 		this.stdin = process.openStdin()
 		this.stdin.addListener('data', this.inputHandler.bind(this))
@@ -136,7 +139,7 @@ export default class Rutux {
 				res.forEach((file, key) => this.files.set(key, file))
 			}
 		})().then(_ => {
-			console.log('Ready for commands!')
+			console.log('[INFO]> Ready for commands!')
 		})
 	}
 
@@ -388,7 +391,7 @@ export default class Rutux {
 		return null
 	}
 
-	readBody(stream: Http2Stream): Promise<string | Buffer> {
+	readBody(stream: Http2Stream = throwError()): Promise<string | Buffer> {
 		return new Promise((res, rej) => {
 			if (!stream.readable) rej(new Error('Stream is not readable'))
 			stream.on('data', value => {
@@ -399,6 +402,7 @@ export default class Rutux {
 					toRes = JSON.parse(String(value))
 				} catch (e) {
 					// Payload is not a JSON
+					if(this.isDev()) console.log(e)
 					toRes = String(value)
 				}
 
@@ -411,14 +415,15 @@ export default class Rutux {
 		return process.env['NODE_ENV'] !== 'production'
 	}
 
-	apport(port: number = this.port) {
+	apport(port: number = this.port): void {
 		if (port !== this.port) this.port = port
 		try {
 			this.app.listen(port)
 		} catch (err) {
 			console.error(`[ERROR]> ${err}\nSwitching to another port`)
-			this.port = Math.floor(Math.random() * (9999 - 1000) + 1000)
+			this.port = Math.floor(Math.random() * 8999 + 1000)
 			this.app.listen(this.port)
 		}
+		console.log(`[INFO]> Listening @port ${this.port}`)
 	}
 }
