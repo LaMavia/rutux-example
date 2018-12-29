@@ -93,15 +93,22 @@ import { MongoClient, ObjectID } from "mongodb"
 								},
 							},
 						},
-						{ $sort: "asc", $mapper([key, v]: [string, Uint8Array]) {
+						{ $sort: "asc", $mapper([key, v]: [string, Uint8Array]): {_id: string} & Post {
 							const o = Statux.BSON.deserialize(v) as Post
 							o._id = String(o._id)
 							return o
 						}}
-					),
+					)[0],
 					{ colors: true }
 				)
 			}
+
+			debugger
+			this.store.update({}, {
+				posts: {
+					$set: {}
+				}
+			})
 		},
 	})
 

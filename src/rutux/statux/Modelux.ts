@@ -1,4 +1,4 @@
-import m, { MongoClient, UpdateQuery } from "mongodb"
+import m, { MongoClient, FilterQuery } from "mongodb"
 import BSON, {
 	Int32,
 	DBRef,
@@ -15,9 +15,13 @@ import BSON, {
 	Symbol,
   ObjectId,
 } from "bson-ext"
-import { ConditionQuery } from "querifier/dist/src/distionaries/condition.dict";
-import { ConditionSettings, get, update, HighConditionQuery, ObjectLit } from "querifier";
+import { ConditionQuery, ConditionSettings } from "querifier/dist/src/distionaries/condition.dict";
 import { Statux } from ".";
+import { natifyUpdate } from "querifier/dist/src/helpers/nativfy";
+import { ObjectLit } from "querifier";
+import { get } from "querifier/dist/src/get";
+import { update } from "querifier/dist/src/update"
+import { UpdateQuery } from "querifier/dist/src/distionaries/update.dict";
 
 /**
  * | Int32
@@ -72,8 +76,8 @@ export class Modulux {
     return this.state
   }
 
-  get(query: ConditionQuery, options: ConditionSettings = {}, forceDB?: boolean): ModuluxScheme[] { 
-    let output: ModuluxScheme[] = []
+  get(query: ConditionQuery, options: Partial<ConditionSettings<any>> = {}, forceDB?: boolean) { 
+    let output: unknown[] = []
     const q = {[this.collection]: query}
     const o = {[this.collection]: this.state}
     if(!forceDB) {
@@ -149,7 +153,25 @@ export class Modulux {
     }
   }
 
-  update() {
-
+  async update<T>(filter: FilterQuery<T>, query: UpdateQuery): Promise<any> {
+    debugger
+    const q = natifyUpdate(query)
+    // @ts-ignore
+    this.state = update(this.state, query)
+    if(this.client.isConnected()) {
+      const db = this.client.db(this.dbName)
+      try {
+        return db.collection(this.collection)
+          .update(filter, q);
+      }
+      catch (err) {
+        console.error(err);
+        return err;
+      }
+    } else {
+      return this.client.connect()
+        .then(this.update.bind(this, filter, query))
+        .catch(console.error)
+    }
   }
 }

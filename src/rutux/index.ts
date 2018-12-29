@@ -8,7 +8,7 @@ import cp from 'child_process'
 import { parseQuery } from './helpers/parseQuery'
 import handleRefusedStream from './helpers/handleRefusedStream'
 import { Statux, StatuxState } from './statux';
-import { throwError } from 'querifier';
+import { throwError, ObjectLit } from 'querifier';
 
 interface IncomingObject {
 	stream: http.ServerHttp2Stream
@@ -381,7 +381,7 @@ export default class Rutux {
 	render(
 		stream: Http2Stream,
 		template: string,
-		props: { [key: string]: any } = {}
+		props: ObjectLit = {}
 	): Error | null {
 		const t = this.templates[template]
 		if (!t || typeof t !== 'function')
